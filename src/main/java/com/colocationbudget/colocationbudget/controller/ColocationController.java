@@ -22,8 +22,7 @@ public class ColocationController {
 
     @CrossOrigin
     @GetMapping(value = "/{id}")
-    public ColocationDto getById(HttpServletRequest request,
-                                 @PathVariable Long id
+    public ColocationDto getById(HttpServletRequest request, @PathVariable Long id
 //                                 @RequestParam(value = "date", required = false, defaultValue = "")
 //                                     @DateTimeFormat(pattern = LOCAL_DATE_FORMAT) String date
     ) {
