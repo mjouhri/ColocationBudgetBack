@@ -13,11 +13,12 @@ public class ColocationRepository extends BaseRepository {
 
 
 
-    public void create(Colocation colocation) {
+    public Long create(Colocation colocation) {
         Session session = getEntityManager().unwrap(Session.class);
         if (colocation != null) {
-            session.save(colocation);
+            return (Long) session.save(colocation);
         }
+        return null;
     }
 
     public Colocation getById(Long idColocation) {

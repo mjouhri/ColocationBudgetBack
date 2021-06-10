@@ -13,11 +13,18 @@ public class UserColocationsRepository extends BaseRepository{
 
 
 
-    public UserColocation getById(Long id) {
+    public UserColocation getByUserId(Long id) {
         Session session = getEntityManager().unwrap(Session.class);
         Query<UserColocation> query = session.createQuery(GET_USER_COLOCATIONS_BY_ID_USER_QUERY);
         query.setParameter("idUser", id);
         return query.getResultList().size() > 0 ? query.getResultList().get(0) : null ;
+    }
+
+    public void update(UserColocation userColocation) {
+        Session session = getEntityManager().unwrap(Session.class);
+        if (userColocation != null) {
+            session.update(userColocation);
+        }
     }
 
 //    public Integer getNbColocationsByIdUser(Long id) {
