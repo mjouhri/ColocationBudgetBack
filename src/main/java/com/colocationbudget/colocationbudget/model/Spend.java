@@ -1,6 +1,6 @@
 package com.colocationbudget.colocationbudget.model;
 
-import com.colocationbudget.colocationbudget.dto.ExpenseDto;
+import com.colocationbudget.colocationbudget.dto.SpendDto;
 import org.modelmapper.ModelMapper;
 
 import javax.persistence.*;
@@ -8,25 +8,25 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
-@Table(name = "expense")
-public class Expense extends BaseModel{
+@Table(name = "spend")
+public class Spend extends BaseModel{
 
     private Long id;
     private Type type;
-    private Double value;
+    private Double amount;
     private String description;
     private LocalDate date;
-    private String payementMethod;
+    private String paymentMethod;
     private Boolean recurrent;
     private User userPaye;
     private String image;
 
-    public Expense() {
+    public Spend() {
     }
 
-    public ExpenseDto toDto() {
+    public SpendDto toDto() {
         ModelMapper modelMapper = new ModelMapper();
-        return modelMapper.map(this, ExpenseDto.class);
+        return modelMapper.map(this, SpendDto.class);
     }
 
     @Id
@@ -49,13 +49,13 @@ public class Expense extends BaseModel{
         this.type = type;
     }
 
-    @Column(name = "value")
-    public Double getValue() {
-        return value;
+    @Column(name = "amount")
+    public Double getAmount() {
+        return amount;
     }
 
-    public void setValue(Double value) {
-        this.value = value;
+    public void setAmount(Double amount) {
+        this.amount = amount;
     }
 
     @Column(name = "description")
@@ -76,13 +76,13 @@ public class Expense extends BaseModel{
         this.date = date;
     }
 
-    @Column(name = "payement_method")
-    public String getPayementMethod() {
-        return payementMethod;
+    @Column(name = "payment_method")
+    public String getPaymentMethod() {
+        return paymentMethod;
     }
 
-    public void setPayementMethod(String payementMethod) {
-        this.payementMethod = payementMethod;
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
     }
 
     @Column(name = "recurrent")
@@ -115,32 +115,32 @@ public class Expense extends BaseModel{
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Expense expense = (Expense) o;
-        return Objects.equals(id, expense.id) &&
-                Objects.equals(type, expense.type) &&
-                Objects.equals(value, expense.value) &&
-                Objects.equals(description, expense.description) &&
-                Objects.equals(date, expense.date) &&
-                Objects.equals(payementMethod, expense.payementMethod) &&
-                Objects.equals(recurrent, expense.recurrent) &&
-                Objects.equals(userPaye, expense.userPaye) &&
-                Objects.equals(image, expense.image);
+        Spend spend = (Spend) o;
+        return Objects.equals(id, spend.id) &&
+                Objects.equals(type, spend.type) &&
+                Objects.equals(amount, spend.amount) &&
+                Objects.equals(description, spend.description) &&
+                Objects.equals(date, spend.date) &&
+                Objects.equals(paymentMethod, spend.paymentMethod) &&
+                Objects.equals(recurrent, spend.recurrent) &&
+                Objects.equals(userPaye, spend.userPaye) &&
+                Objects.equals(image, spend.image);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, type, value, description, date, payementMethod, recurrent, userPaye, image);
+        return Objects.hash(id, type, amount, description, date, paymentMethod, recurrent, userPaye, image);
     }
 
     @Override
     public String toString() {
-        return "Expense{" +
+        return "Spend{" +
                 "id=" + id +
                 ", type=" + type +
-                ", value=" + value +
+                ", amount=" + amount +
                 ", description='" + description + '\'' +
                 ", date=" + date +
-                ", payementMethod='" + payementMethod + '\'' +
+                ", paymentMethod='" + paymentMethod + '\'' +
                 ", recurrent=" + recurrent +
                 ", userPaye=" + userPaye +
                 ", image='" + image + '\'' +

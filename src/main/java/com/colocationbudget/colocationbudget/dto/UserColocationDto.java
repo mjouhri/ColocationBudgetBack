@@ -1,8 +1,6 @@
 package com.colocationbudget.colocationbudget.dto;
 
 
-import com.colocationbudget.colocationbudget.model.Expense;
-import com.colocationbudget.colocationbudget.model.Type;
 import com.colocationbudget.colocationbudget.model.UserColocation;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import org.modelmapper.ModelMapper;

@@ -14,7 +14,7 @@ public class ColocationDto extends BaseDto {
     private String name;
     private UserDto owner;
     private List<UserDto> users;
-    private List<ExpenseDto> expenses;
+    private List<SpendDto> spends;
 
     public Colocation toEntity() {
         ModelMapper modelMapper = new ModelMapper();
@@ -56,12 +56,12 @@ public class ColocationDto extends BaseDto {
         this.users = users;
     }
 
-    public List<ExpenseDto> getExpenses() {
-        return expenses;
+    public List<SpendDto> getSpends() {
+        return spends;
     }
 
-    public void setExpenses(List<ExpenseDto> expenses) {
-        this.expenses = expenses;
+    public void setSpends(List<SpendDto> spends) {
+        this.spends = spends;
     }
 
     @Override
@@ -73,12 +73,12 @@ public class ColocationDto extends BaseDto {
                 Objects.equals(name, that.name) &&
                 Objects.equals(owner, that.owner) &&
                 Objects.equals(users, that.users) &&
-                Objects.equals(expenses, that.expenses);
+                Objects.equals(spends, that.spends);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, owner, users, expenses);
+        return Objects.hash(id, name, owner, users, spends);
     }
 
     @Override
@@ -88,7 +88,7 @@ public class ColocationDto extends BaseDto {
                 ", name='" + name + '\'' +
                 ", owner=" + owner +
                 ", users=" + users +
-                ", expenses=" + expenses +
+                ", spends=" + spends +
                 '}';
     }
 }

@@ -1,12 +1,15 @@
 package com.colocationbudget.colocationbudget.controller;
 
 import com.colocationbudget.colocationbudget.dto.ColocationDto;
+import com.colocationbudget.colocationbudget.dto.SpendDto;
+import com.colocationbudget.colocationbudget.dto.TypeDto;
+import com.colocationbudget.colocationbudget.model.User;
 import com.colocationbudget.colocationbudget.service.ColocationService;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @RestController
 @Validated
@@ -46,4 +49,23 @@ public class ColocationController {
     public void delete(HttpServletRequest request, @PathVariable Long id) {
         //colocationService.delete(id);
     }
+
+    @CrossOrigin
+    @PostMapping(value = "/addSpend/{idColocation}")
+    public void addSpendToColocation(HttpServletRequest request, @RequestBody SpendDto spendDto, @PathVariable Long idColocation) {
+        colocationService.addSpendToColocation(idColocation ,spendDto.toEntity());
+    }
+
+    @CrossOrigin
+    @GetMapping(value = "/listSpendType")
+    public List<TypeDto> getListSpendType(HttpServletRequest request) {
+        return colocationService.getListSpendType();
+    }
+
+    @CrossOrigin
+    @GetMapping(value = "/usersOfColocation/{idColocation}")
+    public List<User> getUsersOfColocation(HttpServletRequest request, @PathVariable Long idColocation) {
+        return colocationService.getUsersofColocation(idColocation);
+    }
+
 }

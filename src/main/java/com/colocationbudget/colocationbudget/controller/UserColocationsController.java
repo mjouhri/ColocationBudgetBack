@@ -33,7 +33,7 @@ public class UserColocationsController {
 
     @CrossOrigin
     @PostMapping(value = "/newColocation/{idUser}")
-    public void newColocation(HttpServletRequest request, @PathVariable Long idUser, @PathParam("name") String name) {
+    public void newColocation(HttpServletRequest request, @PathVariable Long idUser, @RequestBody String name) {
         userColocationsService.newColocation(name, idUser);
     }
 

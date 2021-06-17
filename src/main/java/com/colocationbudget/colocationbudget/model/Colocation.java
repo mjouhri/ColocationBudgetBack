@@ -15,7 +15,7 @@ public class Colocation extends BaseModel{
     private String name;
     private User owner;
     private List<User> users;
-    private List<Expense> expenses;
+    private List<Spend> spends;
 
     public Colocation() {
     }
@@ -64,12 +64,12 @@ public class Colocation extends BaseModel{
     }
 
     @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
-    public List<Expense> getExpenses() {
-        return expenses;
+    public List<Spend> getSpends() {
+        return spends;
     }
 
-    public void setExpenses(List<Expense> expenses) {
-        this.expenses = expenses;
+    public void setSpends(List<Spend> spends) {
+        this.spends = spends;
     }
 
     @Override
@@ -81,12 +81,12 @@ public class Colocation extends BaseModel{
                 Objects.equals(name, that.name) &&
                 Objects.equals(owner, that.owner) &&
                 Objects.equals(users, that.users) &&
-                Objects.equals(expenses, that.expenses);
+                Objects.equals(spends, that.spends);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, owner, users, expenses);
+        return Objects.hash(id, name, owner, users, spends);
     }
 
     @Override
@@ -96,7 +96,7 @@ public class Colocation extends BaseModel{
                 ", name='" + name + '\'' +
                 ", owner=" + owner +
                 ", users=" + users +
-                ", expenses=" + expenses +
+                ", spends=" + spends +
                 '}';
     }
 }

@@ -1,6 +1,6 @@
 package com.colocationbudget.colocationbudget.dto;
 
-import com.colocationbudget.colocationbudget.model.Expense;
+import com.colocationbudget.colocationbudget.model.Spend;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import org.modelmapper.ModelMapper;
 
@@ -8,23 +8,23 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class ExpenseDto extends BaseDto {
+public class SpendDto extends BaseDto {
     private Long id;
     private TypeDto type;
-    private Double value;
+    private Double amount;
     private String description;
     private String date;
-    private String payementMethod;
+    private String paymentMethod;
     private Boolean recurrent;
     private UserDto userPaye;
     private String image;
 
-    public ExpenseDto() {
+    public SpendDto() {
     }
 
-    public Expense toEntity() {
+    public Spend toEntity() {
         ModelMapper modelMapper = new ModelMapper();
-        return modelMapper.map(this, Expense.class);
+        return modelMapper.map(this, Spend.class);
     }
 
     public Long getId() {
@@ -43,12 +43,12 @@ public class ExpenseDto extends BaseDto {
         this.type = type;
     }
 
-    public Double getValue() {
-        return value;
+    public Double getAmount() {
+        return amount;
     }
 
-    public void setValue(Double value) {
-        this.value = value;
+    public void setAmount(Double amount) {
+        this.amount = amount;
     }
 
     public String getDescription() {
@@ -67,12 +67,12 @@ public class ExpenseDto extends BaseDto {
         this.date = date;
     }
 
-    public String getPayementMethod() {
-        return payementMethod;
+    public String getPaymentMethod() {
+        return paymentMethod;
     }
 
-    public void setPayementMethod(String payementMethod) {
-        this.payementMethod = payementMethod;
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
     }
 
     public Boolean getRecurrent() {
@@ -103,13 +103,13 @@ public class ExpenseDto extends BaseDto {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ExpenseDto that = (ExpenseDto) o;
+        SpendDto that = (SpendDto) o;
         return Objects.equals(id, that.id) &&
                 Objects.equals(type, that.type) &&
-                Objects.equals(value, that.value) &&
+                Objects.equals(amount, that.amount) &&
                 Objects.equals(description, that.description) &&
                 Objects.equals(date, that.date) &&
-                Objects.equals(payementMethod, that.payementMethod) &&
+                Objects.equals(paymentMethod, that.paymentMethod) &&
                 Objects.equals(recurrent, that.recurrent) &&
                 Objects.equals(userPaye, that.userPaye) &&
                 Objects.equals(image, that.image);
@@ -117,7 +117,7 @@ public class ExpenseDto extends BaseDto {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, type, value, description, date, payementMethod, recurrent, userPaye, image);
+        return Objects.hash(id, type, amount, description, date, paymentMethod, recurrent, userPaye, image);
     }
 
     @Override
@@ -125,10 +125,10 @@ public class ExpenseDto extends BaseDto {
         return "ExpenseDto{" +
                 "id=" + id +
                 ", type=" + type +
-                ", value=" + value +
+                ", amount=" + amount +
                 ", description='" + description + '\'' +
                 ", date='" + date + '\'' +
-                ", payementMethod='" + payementMethod + '\'' +
+                ", paymentMethod='" + paymentMethod + '\'' +
                 ", recurrent=" + recurrent +
                 ", userPaye=" + userPaye +
                 ", image='" + image + '\'' +
