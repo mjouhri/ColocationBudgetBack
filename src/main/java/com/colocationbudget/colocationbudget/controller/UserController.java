@@ -20,8 +20,7 @@ public class UserController {
 
     @CrossOrigin
     @GetMapping(value = "/{id}")
-    public UserDto getById(HttpServletRequest request, @PathVariable Long id,
-                           @PathParam("mail") String mail) {
+    public UserDto getById(HttpServletRequest request, @PathVariable Long id) {
         return userService.getById(id);
     }
 
